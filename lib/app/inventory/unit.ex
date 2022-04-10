@@ -19,6 +19,7 @@ defmodule App.Inventory.Unit do
   def changeset(unit, attrs) do
     unit
     |> cast(attrs, [:uuid, :name, :price, :category, :location_name, :location_area])
+    |> unique_constraint(:uuid)
     |> validate_required([:uuid, :name, :price, :category, :location_name, :location_area])
   end
 end

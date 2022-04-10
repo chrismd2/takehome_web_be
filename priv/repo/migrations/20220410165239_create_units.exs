@@ -13,5 +13,7 @@ defmodule App.Repo.Migrations.CreateUnits do
 
       timestamps()
     end
+
+    create unique_index(:units, [:uuid])
   end
 end
