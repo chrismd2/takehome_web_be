@@ -55,6 +55,7 @@ While we'll be gathering as much data as we can from your implementation, our ev
 ### Your Notes
 
 _TODO: Please leave us any notes about your experience with this challenge here._
+- I stuff secrets into a .env file which means I run `source .env` before I startand my .env looks very similar to example.env
 
 ### Time Spent
 

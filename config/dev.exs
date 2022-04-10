@@ -2,9 +2,9 @@ import Config
 
 # Configure your database
 config :app, App.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "app_dev",
+  username: System.get_env("DB_USER"),
+  password: System.get_env("DB_PASS"),
+  database: "#{System.get_env("DB_APP")}_dev",
   hostname: System.get_env("DB_HOST", "localhost"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
