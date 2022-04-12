@@ -7,6 +7,20 @@ defmodule AppWeb.Router do
 
   scope "/api", AppWeb do
     pipe_through :api
+
+    scope "/inventory" do
+      # CREATE
+      post "/", InventoryApi, :new
+
+      # READ
+      get "/", InventoryApi, :get
+
+      # UPDATE
+      patch "/", InventoryApi, :update
+
+      # DELETE
+      delete "/", InventoryApi, :delete
+    end
   end
 
   # Enables LiveDashboard only for development

@@ -1,0 +1,14 @@
+curl -X POST "localhost:4000/api/inventory" -H "Content-Type: application/json" -d '{ "key":"value"}'
+curl -X POST "localhost:4000/api/inventory" -H "Content-Type: application/json" -d '{
+  "uuid":"value",
+  "name":"value",
+  "price":"value",
+  "category":"value",
+  "location_name":"value",
+  "location_area":"value"
+}'
+curl -X GET "localhost:4000/api/inventory"
+curl -X GET "localhost:4000/api/inventory?location_area=value"
+curl -X GET "localhost:4000/api/inventory?id=f98aedee-0a30-4aa7-b078-a298e6fe79ec"
+curl -X PATCH "localhost:4000/api/inventory" -H "Content-Type: application/json" -d '{ "id":"9a8dba3d-0c85-41d6-861c-fdebaed94db4", "location_name":"roof", "location_area":"upper"}'
+curl -X DELETE "localhost:4000/api/inventory" -H "Content-Type: application/json" -d '{ "id":"9a8dba3d-0c85-41d6-861c-fdebaed94db4" }'
