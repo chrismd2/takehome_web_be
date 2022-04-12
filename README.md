@@ -56,6 +56,7 @@ While we'll be gathering as much data as we can from your implementation, our ev
 
 _TODO: Please leave us any notes about your experience with this challenge here._
 - I stuff secrets into a .env file which means I run `source .env` before I startand my .env looks very similar to example.env
+- I was going to weed out the to-be-records that had empty fields for strings then realized that would slow down reading the file and the changeset would handle that since the fields are required
 
 ### Time Spent
 
