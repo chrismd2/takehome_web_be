@@ -1,3 +1,4 @@
+curl -X POST "localhost:4000/api/inventory/import" -H "Content-Type: multipart/form-data" -F 'file=@data.csv'
 curl -X POST "localhost:4000/api/inventory" -H "Content-Type: application/json" -d '{ "key":"value"}'
 curl -X POST "localhost:4000/api/inventory" -H "Content-Type: application/json" -d '{
   "uuid":"value",

@@ -1,6 +1,18 @@
 defmodule AppWeb.InventoryApi do
   use AppWeb, :controller
   import App.Inventory
+  def import(conn, params \\ %{}) do
+    Map.keys(params)
+    |> Enum.map(fn(formname) ->
+      params = Map.fetch!(params, formname)
+      Mix.Tasks.ImportProducts.run(params.path)
+    end)
+    |> IO.inspect
+    message = "adding new data list"
+    conn
+    |> put_status(200)
+    |> json(%{"message" => message})
+  end
   def new(conn, params \\ %{}) do
     {status, changeset} = key_conversion(params)
     |> create_unit
@@ -31,7 +43,6 @@ defmodule AppWeb.InventoryApi do
       |> Enum.all?
     end)
     |> inspect
-    |> IO.inspect
     conn
     |> put_status(200)
     |> json(%{"message" => message})

@@ -12,8 +12,8 @@ defmodule Mix.Tasks.ImportProducts do
       IO.puts("Importing #{filename} to the DB...")
       File.ls|>IO.inspect
       # Get the data in the .csv and convert it into a list
-      [keys | data] = "../../../#{filename}"
-      |> Path.expand(__DIR__)
+      [keys | data] = "#{filename}"
+      |> Path.expand()
       |> File.stream!
       |> CSV.decode!
       |> Enum.to_list

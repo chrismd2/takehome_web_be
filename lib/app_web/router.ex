@@ -9,6 +9,8 @@ defmodule AppWeb.Router do
     pipe_through :api
 
     scope "/inventory" do
+      post "/import", InventoryApi, :import
+
       # CREATE
       post "/", InventoryApi, :new
 
