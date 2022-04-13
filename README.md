@@ -62,17 +62,20 @@ _TODO: Please leave us any notes about your experience with this challenge here.
   + There's also a tool that converts curl request to httpoison: https://curlconverter.com/#elixir
 - I'm creating a seperate module for api calls to the inventory instead of adding functions to the existing context to keep the context simple and allow the api to be reusable and replacable.
 - Changesets use atoms in their maps so I added a key converter to the InventoryApi as a private function
-- Started learning about uploading files via curl using multipart
-- Started learning how to open files recieved via multipart
+- Added an inventory api user guide
 
 
 ### Time Spent
 
 _TODO: Give us a rough estimate of the time you spent working on the test. If you spent time learning in order to do this project please feel free to let us know that too. This makes sure that we are evaluating your work fairly and in context. It also gives us the opportunity to learn and adjust our process if needed._
 Development   - 8 hr 55 min
-Documentation - H hr 30 min
+Documentation - 1 hr 0 min
 Testing Dev   - H hr M min
-Research      - H hr 40 min
+Research      - H hr 50 min
+
+Learned skills
+- Uploading files via curl using multipart
+- Openning files recieved via multipart
 
 ### Assumptions
 
@@ -85,3 +88,6 @@ The assumptions I'm making are:
 ### Production Readiness
 
 _TODO: Provide us with some notes about what you would do next if you had more time. Are there additional features that you would want to add? Specific improvements to the code you would make? Any additional testing or documentation?_
+Next steps for this project would include:
+- Authentication starting with `mix phx.gen.auth Accounts User users`
+- Find nicer documentation tools
