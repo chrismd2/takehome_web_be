@@ -57,11 +57,22 @@ While we'll be gathering as much data as we can from your implementation, our ev
 _TODO: Please leave us any notes about your experience with this challenge here._
 - I stuff secrets into a .env file which means I run `source .env` before I startand my .env looks very similar to example.env
 - I was going to weed out the to-be-records that had empty fields for strings then realized that would slow down reading the file and the changeset would handle that since the fields are required
+- I'm using httpoison for web requests
+  + Tried Tesla before and I'm not a fan
+  + There's also a tool that converts curl request to httpoison: https://curlconverter.com/#elixir
+- I'm creating a seperate module for api calls to the inventory instead of adding functions to the existing context to keep the context simple and allow the api to be reusable and replacable.
+- Changesets use atoms in their maps so I added a key converter to the InventoryApi as a private function
+- Started learning about uploading files via curl using multipart
+- Started learning how to open files recieved via multipart
+
 
 ### Time Spent
 
 _TODO: Give us a rough estimate of the time you spent working on the test. If you spent time learning in order to do this project please feel free to let us know that too. This makes sure that we are evaluating your work fairly and in context. It also gives us the opportunity to learn and adjust our process if needed._
-Development   - 5 hr 15 min
+Development   - 8 hr 55 min
+Documentation - H hr 30 min
+Testing Dev   - H hr M min
+Research      - H hr 40 min
 
 ### Assumptions
 
