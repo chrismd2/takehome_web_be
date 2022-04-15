@@ -84,6 +84,7 @@ The assumptions I'm making are:
 - records shouldn't have empty fields
 - uuid is a universally unique identifier
 - duplacate uuids aren't being tracked or counted
+- dependencies shouldn't be added to mix.exs
 
 ### Production Readiness
 
