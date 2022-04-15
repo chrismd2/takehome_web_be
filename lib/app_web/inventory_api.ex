@@ -20,14 +20,14 @@ defmodule AppWeb.InventoryApi do
     case status do
       :ok -> conn
         |> put_status(201)
-        |> json(%{"success" => Jason.encode!(changeset)})
+        |> json(%{"success" => Jason.encode!(Map.drop(changeset, [:__meta__, :__struct__] ))})
       :error -> conn
         |> put_status(400)
-        |> json(%{"failed to create_unit" => Jason.encode!(changeset.errors)})
+        |> json(%{"failed to create_unit" => Jason.encode!(Map.drop( changeset.errors, [:__meta__, :__struct__] ) )})
     end
   end
   def get(conn, %{"id" => id} = _params) do
-    message = Jason.encode!(get_unit!(id))
+    message = Jason.encode!(Map.drop(get_unit!(id) , [:__meta__, :__struct__] ))
     conn
     |> put_status(200)
     |> json(%{"message" => message})
@@ -42,7 +42,17 @@ defmodule AppWeb.InventoryApi do
       end)
       |> Enum.all?
     end)
-    |> Jason.encode!
+
+    message = if is_map(message) do
+      message
+      |> Map.drop([:__meta__, :__struct__])
+      |> Jason.encode!
+    else
+      message
+      |> inspect
+      |> Jason.encode!
+    end
+
     conn
     |> put_status(200)
     |> json(%{"message" => message})
@@ -54,10 +64,10 @@ defmodule AppWeb.InventoryApi do
     case status do
       :ok -> conn
         |> put_status(200)
-        |> json(%{"success" => Jason.encode!(changeset)})
+        |> json(%{"success" => Jason.encode!( Map.drop( changeset, [:__meta__, :__struct__] ) )})
       :error -> conn
         |> put_status(400)
-        |> json(%{"failed to update_unit" => Jason.encode!(changeset.errors)})
+        |> json(%{"failed to update_unit" => Jason.encode!(Map.drop(changeset.errors, [:__meta__, :__struct__] ))})
     end
   end
   def delete(conn, %{"id" => id} = _params) do
