@@ -1,0 +1,13 @@
+uuid,name,price,category,location_name,location_area
+test-id-1,Thelio Major,2999.5,desktops,Test Location 3,test_area_2
+,,,,,
+,,,,,
+test-id-2,Lemur Pro,1249.99,laptops,Test Location 4,test_area_2
+test-id-3,MX Master 3 Wireless Mouse,129,accessories,Test Location 1,test_area_1
+test-id-4,Meerkat,549.99,desktops,Test Location 5,test_area_3
+test-id-4,Meerkat,549.99,desktops,Test Location 5,test_area_3
+test-id-5,Gazelle,1399,laptops,Test Location 5,test_area_3
+test-id-6,Thelio Mira,1399,desktops,Test Location 5,test_area_3
+test-id-7,Launch Keyboard,285.99,accessories,Test Location 2,test_area_1
+,,,,,
+test-id-7,Launch Keyboard,285.99,accessories,Test Location 2,test_area_1
