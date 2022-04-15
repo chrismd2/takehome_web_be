@@ -63,6 +63,7 @@ _TODO: Please leave us any notes about your experience with this challenge here.
 - I'm creating a seperate module for api calls to the inventory instead of adding functions to the existing context to keep the context simple and allow the api to be reusable and replacable.
 - Changesets use atoms in their maps so I added a key converter to the InventoryApi as a private function
 - Added an inventory api user guide
+- Added a folder for the mix folder to tests to follow the existing style
 
 
 ### Time Spent
@@ -84,7 +85,6 @@ The assumptions I'm making are:
 - records shouldn't have empty fields
 - uuid is a universally unique identifier
 - duplacate uuids aren't being tracked or counted
-- dependencies shouldn't be added to mix.exs
 
 ### Production Readiness
 
