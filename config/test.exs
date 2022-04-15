@@ -18,7 +18,7 @@ config :app, App.Repo,
 config :app, AppWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "Sw4zouU2GRl9LApZJkG0AHzazd1zXcPWWAuQUa/gZfLOciZKT8hqvBRsfg30BUlj",
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
