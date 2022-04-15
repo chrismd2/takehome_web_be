@@ -85,6 +85,9 @@ defmodule AppWeb.InventoryApi do
       new_map
     end
   end
+  defp new_keys_merge([], _a_map) do
+    %{}
+  end
   defp key_conversion(a_map) do
     Map.keys(a_map)
     |> new_keys_merge(a_map)
