@@ -20,14 +20,14 @@ defmodule AppWeb.InventoryApi do
     case status do
       :ok -> conn
         |> put_status(201)
-        |> json(%{"success" => inspect(changeset)})
+        |> json(%{"success" => Jason.encode!(changeset)})
       :error -> conn
         |> put_status(400)
-        |> json(%{"failed to create_unit" => inspect(changeset.errors)})
+        |> json(%{"failed to create_unit" => Jason.encode!(changeset.errors)})
     end
   end
   def get(conn, %{"id" => id} = _params) do
-    message = inspect(get_unit!(id))
+    message = Jason.encode!(get_unit!(id))
     conn
     |> put_status(200)
     |> json(%{"message" => message})
@@ -42,7 +42,7 @@ defmodule AppWeb.InventoryApi do
       end)
       |> Enum.all?
     end)
-    |> inspect
+    |> Jason.encode!
     conn
     |> put_status(200)
     |> json(%{"message" => message})
@@ -54,10 +54,10 @@ defmodule AppWeb.InventoryApi do
     case status do
       :ok -> conn
         |> put_status(200)
-        |> json(%{"success" => inspect(changeset)})
+        |> json(%{"success" => Jason.encode!(changeset)})
       :error -> conn
         |> put_status(400)
-        |> json(%{"failed to update_unit" => inspect(changeset.errors)})
+        |> json(%{"failed to update_unit" => Jason.encode!(changeset.errors)})
     end
   end
   def delete(conn, %{"id" => id} = _params) do
