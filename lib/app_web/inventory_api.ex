@@ -48,8 +48,16 @@ defmodule AppWeb.InventoryApi do
       |> Map.drop([:__meta__, :__struct__])
       |> Jason.encode!
     else
+      message = if Enum.count(message) > 0 do
+        Enum.map(message, fn(unit) ->
+          Map.drop(unit, [:__meta__, :__struct__])
+          |> Jason.encode!
+        end)
+      else
+        message
+        |> inspect
+      end
       message
-      |> inspect
       |> Jason.encode!
     end
 
