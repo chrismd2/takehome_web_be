@@ -64,6 +64,7 @@ _TODO: Please leave us any notes about your experience with this challenge here.
 - Changesets use atoms in their maps so I added a key converter to the InventoryApi as a private function
 - Added an inventory api user guide
 - Added a folder for the mix folder to tests to follow the existing style
+- I should have wrote the tests before the program
 
 
 ### Time Spent
@@ -71,12 +72,14 @@ _TODO: Please leave us any notes about your experience with this challenge here.
 _TODO: Give us a rough estimate of the time you spent working on the test. If you spent time learning in order to do this project please feel free to let us know that too. This makes sure that we are evaluating your work fairly and in context. It also gives us the opportunity to learn and adjust our process if needed._
 Development   - 8 hr 55 min
 Documentation - 1 hr 0 min
-Testing Dev   - H hr M min
-Research      - H hr 50 min
+Testing Dev   - 6 hr 00 min
+Research      - 2 hr 30 min
 
 Learned skills
 - Uploading files via curl using multipart
 - Openning files recieved via multipart
+- Test driven development
+- Using testing features provided by Elixir & Phoenix
 
 ### Assumptions
 
@@ -91,4 +94,7 @@ The assumptions I'm making are:
 _TODO: Provide us with some notes about what you would do next if you had more time. Are there additional features that you would want to add? Specific improvements to the code you would make? Any additional testing or documentation?_
 Next steps for this project would include:
 - Authentication starting with `mix phx.gen.auth Accounts User users`
-- Find nicer documentation tools
+- Find nicer documentation tools & patterns
+- Change the string keys to atoms
+- Run the test setup once for all tests with the database & api
+- Code some reciever functions for converting json bodies to Elixir structs
