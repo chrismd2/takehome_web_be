@@ -45,7 +45,7 @@ defmodule App.InventoryApiTest do
     assert response.status_code == 200
   end
 
-  defp get_setup do
+  defp test_setup do
     request = %HTTPoison.Request{
       method: :post,
       url: "http://localhost:4002/api/inventory/import",
@@ -104,7 +104,7 @@ defmodule App.InventoryApiTest do
     |> Map.new
   end
   test "get/2 gets the records based on provided params" do
-    get_setup
+    test_setup
 
     response = test_get_helper(%{"location_area"=>"value"})
     assert response.status_code == 200
@@ -141,7 +141,33 @@ defmodule App.InventoryApiTest do
     response = test_get_helper(%{"id"=>id})
     assert response.status_code == 200
   end
-  test "update/2 updates " do
+  test "update/2 updates record given an id" do
+    test_setup
 
+    response = test_get_helper(%{"location_area"=>"test_area_2"})
+    assert response.status_code == 200
+    list = Jason.decode!(response.body)
+    |> Map.fetch!("message")
+    |> Jason.decode!()
+    [a_map | _tail] = list
+    a_map = Jason.decode!(a_map)
+    assert is_map(a_map)
+    id = Map.fetch!(a_map, "id")
+
+    request = %HTTPoison.Request{
+      method: :patch,
+      url: "http://localhost:4002/api/inventory",
+      options: [],
+      headers: [
+        {~s|Content-Type|, ~s|application/json|},
+      ],
+      params: [],
+      body: ~s|{ "id":"#{id}", "location_name":"roof", "location_area":"upper"}|
+    }
+
+    {:ok, response} = HTTPoison.request(request)
+    assert response.status_code == 200
+    response = test_get_helper(%{"location_name"=>"roof"})
+    assert Jason.decode!(response.body) != []
   end
 end
