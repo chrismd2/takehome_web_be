@@ -9,7 +9,7 @@ defmodule Mix.Tasks.ImportProducts do
   @impl true
   def run(filename \\ "support/data.csv") do
     Ecto.Migrator.with_repo(Repo, fn _repo ->
-      IO.puts("Importing #{filename} to the DB...")
+      # IO.puts("Importing #{filename} to the DB...")
 
       # Get the data in the .csv and convert it into a list
       [keys | data] = "#{filename}"
