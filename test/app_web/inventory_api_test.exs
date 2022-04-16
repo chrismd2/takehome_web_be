@@ -105,14 +105,36 @@ defmodule App.InventoryApiTest do
   end
   test "get/2 gets the records based on provided params" do
     get_setup
+
     response = test_get_helper(%{"location_area"=>"value"})
     assert response.status_code == 200
     assert map_fix(response.body) == %{"message" => []}
+
     response = test_get_helper(%{"location_area"=>"test_area_2"})
     assert response.status_code == 200
-    # assert Map.fetch!(map_fix(response.body), "message") == true
+    list = Jason.decode!(response.body)
+    |> Map.fetch!("message")
+    |> Jason.decode!()
+    [a_map | _tail] = list
+    a_map = Jason.decode!(a_map)
+    assert is_map(a_map)
+    assert Enum.all?(list, fn(unit) ->
+      location_area = Jason.decode!(unit)
+      |> Map.fetch!("location_area")
+      location_area == "test_area_2"
+    end)
+
     response = test_get_helper(%{"location_area"=>"test_area_2","location_name"=>"Location 5"})
     assert response.status_code == 200
-    # assert Jason.decode!(response.body) == true
+    list = Jason.decode!(response.body)
+    |> Map.fetch!("message")
+    |> Jason.decode!()
+    assert Enum.all?(list, fn(unit) ->
+      location_area = Jason.decode!(unit)
+      |> Map.fetch!("location_area")
+      location_name = Jason.decode!(unit)
+      |> Map.fetch!("location_name")
+      (location_area == "test_area_2" || location_name == "Location 5")
+    end)
   end
 end
