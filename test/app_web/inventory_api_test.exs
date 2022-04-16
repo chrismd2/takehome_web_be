@@ -61,6 +61,7 @@ defmodule App.InventoryApiTest do
 
     {:ok, response} = HTTPoison.request(request)
   end
+
   defp test_get_helper(params \\ %{}) do
     params = Map.keys(params)
     |> Enum.map(fn(key) ->
@@ -141,6 +142,7 @@ defmodule App.InventoryApiTest do
     response = test_get_helper(%{"id"=>id})
     assert response.status_code == 200
   end
+
   test "update/2 updates record given an id" do
     test_setup
 
@@ -169,5 +171,36 @@ defmodule App.InventoryApiTest do
     assert response.status_code == 200
     response = test_get_helper(%{"location_name"=>"roof"})
     assert Jason.decode!(response.body) != []
+  end
+
+  test "delete/2 removes a unit from the database given an id" do
+    test_setup
+
+    response = test_get_helper(%{"name"=>"Thelio Major"})
+    assert response.status_code == 200
+    list = Jason.decode!(response.body)
+    |> Map.fetch!("message")
+    |> Jason.decode!()
+    [a_map | _tail] = list
+    a_map = Jason.decode!(a_map)
+    assert is_map(a_map)
+    id = Map.fetch!(a_map, "id")
+
+    request = %HTTPoison.Request{
+      method: :delete,
+      url: "http://localhost:4002/api/inventory",
+      options: [],
+      headers: [
+        {~s|Content-Type|, ~s|application/json|},
+      ],
+      params: [],
+      body: ~s|{ "id":"#{id}" }|
+    }
+
+    {:ok, response} = HTTPoison.request(request)
+    assert response.status_code == 200
+
+    response = test_get_helper(%{"name"=>"Thelio Major"})
+    assert Jason.decode!(Map.fetch!(Jason.decode!(response.body), "message")) == "[]"
   end
 end
