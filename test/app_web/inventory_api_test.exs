@@ -118,6 +118,7 @@ defmodule App.InventoryApiTest do
     [a_map | _tail] = list
     a_map = Jason.decode!(a_map)
     assert is_map(a_map)
+    id = Map.fetch!(a_map, "id")
     assert Enum.all?(list, fn(unit) ->
       location_area = Jason.decode!(unit)
       |> Map.fetch!("location_area")
@@ -136,5 +137,11 @@ defmodule App.InventoryApiTest do
       |> Map.fetch!("location_name")
       (location_area == "test_area_2" || location_name == "Location 5")
     end)
+
+    response = test_get_helper(%{"id"=>id})
+    assert response.status_code == 200
+  end
+  test "update/2 updates " do
+
   end
 end
