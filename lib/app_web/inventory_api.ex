@@ -34,14 +34,19 @@ defmodule AppWeb.InventoryApi do
   end
   def get(conn, params \\ %{}) do
     params = key_conversion(params)
-    message = list_units
-    |> Enum.reject(fn(unit) ->
-      Map.keys(params)
-      |> Enum.map(fn(k) ->
-        (Map.fetch!(params, k) != Map.fetch!(unit, k))
+    message = if params != %{} do
+      list_units
+      |> Enum.reject(fn(unit) ->
+        Map.keys(params)
+        |> Enum.map(fn(k) ->
+          (Map.fetch!(params, k) != Map.fetch!(unit, k))
+        end)
+        |> Enum.all?
       end)
-      |> Enum.all?
-    end)
+    else
+      list_units
+    end
+
 
     message = if is_map(message) do
       message
