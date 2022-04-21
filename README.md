@@ -70,6 +70,7 @@ _TODO: Please leave us any notes about your experience with this challenge here.
 ### Time Spent
 
 _TODO: Give us a rough estimate of the time you spent working on the test. If you spent time learning in order to do this project please feel free to let us know that too. This makes sure that we are evaluating your work fairly and in context. It also gives us the opportunity to learn and adjust our process if needed._
+
 Development   - 8 hr 55 min
 Documentation - 1 hr 0 min
 Testing Dev   - 6 hr 00 min
