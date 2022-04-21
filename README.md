@@ -79,6 +79,8 @@ Testing Dev   - 6 hr 00 min
 
 Research      - 2 hr 30 min
 
+Debugging     - 0 hr 5 min
+
 
 Learned skills
 - Uploading files via curl using multipart
